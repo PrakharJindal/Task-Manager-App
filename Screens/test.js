@@ -28,7 +28,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Swiper from 'react-native-swiper';
 
 const height = Dimensions.get('window').height;
-axios.defaults.baseURL = 'http://192.168.137.1:8000/';
+axios.defaults.baseURL = 'http://taskmanagerapp.pythonanywhere.com/';
 
 class HomeScreen extends Component {
   constructor(props) {

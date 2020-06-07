@@ -25,7 +25,7 @@ const WalkthroughableText = walkthroughable(Text);
 const WalkthroughableView = walkthroughable(View);
 const height = Dimensions.get('window').height;
 
-axios.defaults.baseURL = 'http://192.168.137.1:8000/';
+axios.defaults.baseURL = 'http://taskmanagerapp.pythonanywhere.com/';
 
 class HomeScreen extends Component {
   constructor(props) {

@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import AsyncStorage from '@react-native-community/async-storage';
 
-axios.defaults.baseURL = 'http://192.168.137.1:8000/';
+axios.defaults.baseURL = 'http://taskmanagerapp.pythonanywhere.com/';
 // axios.defaults.baseURL = 'http://127.0.0.1:8000/';
 
 export const checkLogin = () => {
