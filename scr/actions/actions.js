@@ -135,7 +135,7 @@ export const addTodo = (
         },
       )
       .then((res) => {
-        // console.log(res);
+        console.log(res.data);
       });
   };
 };
