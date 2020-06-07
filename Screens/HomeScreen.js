@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
 import {View, Text, Dimensions, Modal, Switch} from 'react-native';
-import {Textarea, Label, Button, Header, Body, Title} from 'native-base';
+import {Textarea, Label, Button, Header, Body, Title, Right} from 'native-base';
 import * as Animatable from 'react-native-animatable';
 import {
   FlatList,
@@ -139,6 +139,16 @@ class HomeScreen extends Component {
               Welcome {this.props.username.toUpperCase()}
             </Title>
           </Body>
+          <Right>
+            <AntDesign
+              name="setting"
+              color="white"
+              size={30}
+              onPress={() => {
+                this.props.navigation.navigate('Settings');
+              }}
+            />
+          </Right>
         </Header>
         <View
           style={{

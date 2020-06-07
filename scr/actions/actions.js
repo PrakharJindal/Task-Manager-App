@@ -18,7 +18,7 @@ export const checkLogin = () => {
           },
         })
         .then(async (res) => {
-          // console.log(res.data);
+          console.log(res.data);
           var typeName = '';
           var todos = '';
           await axios
@@ -148,22 +148,60 @@ export const login = (username, password) => {
         password: password,
       })
       .then(async (res) => {
-        // console.log(res);
+        console.log(res.data);
         try {
           await AsyncStorage.setItem('userid', res.data.id.toString());
           await AsyncStorage.setItem('token', res.data.token);
         } catch (e) {
           // save error
         }
-
+        const token = await AsyncStorage.getItem('token');
+        const userid = await AsyncStorage.getItem('userid');
         // console.log('Done.');
-        checkLogin();
+        var typeName = '';
+        var todos = '';
+        await axios
+          .get(
+            `getTypes/${userid}`,
+            {},
+            {
+              headers: {
+                Authorization: `Token ${token}`,
+              },
+            },
+          )
+          .then((res2) => {
+            console.log(res2.data);
+            typeName = res2.data;
+          });
+        await axios
+          .get(
+            `getTodo/${userid}`,
+            {},
+            {
+              headers: {
+                Authorization: `Token ${token}`,
+              },
+            },
+          )
+          .then((res3) => {
+            // console.log(res3.data);
+            todos = res3.data;
+          });
         dispatch({
-          type: 'LOGIN',
+          type: 'LOGIN2',
+          token: token,
+          userid: userid,
+          typename: typeName,
+          todos: todos,
           username: username,
-          userid: res.data.id.toString(),
-          token: res.data.token,
         });
+        // dispatch({
+        //   type: 'LOGIN',
+        //   username: username,
+        //   userid: res.data.id.toString(),
+        //   token: res.data.token,
+        // });
       })
       .catch((e) => {
         // console.log(e);
@@ -210,5 +248,15 @@ export const signup = (username, password) => {
       .catch(async (e) => {
         // console.log(e);
       });
+  };
+};
+
+export const logout = () => {
+  return async (dispatch) => {
+    await AsyncStorage.removeItem('token');
+    await AsyncStorage.removeItem('userId');
+    dispatch({
+      type: 'LOGOUT',
+    });
   };
 };

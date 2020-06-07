@@ -5,6 +5,7 @@ import {Provider} from 'react-redux';
 import {createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import Reducers from './scr/reducer/index';
+import SplashScreen from 'react-native-splash-screen';
 
 class App extends Component {
   constructor(props) {
@@ -14,6 +15,7 @@ class App extends Component {
 
   componentDidMount = () => {
     console.disableYellowBox = true;
+    SplashScreen.hide();
   };
 
   render() {

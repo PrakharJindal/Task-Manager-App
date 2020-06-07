@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import HomeScreen from './HomeScreen';
 import AddTodoScreen from './AddTodoScreen';
 import {checkLogin} from '../scr/actions';
+import SettingsScreen from './SettingsScreen';
 const Stack = createStackNavigator();
 
 class index extends Component {
@@ -17,7 +18,6 @@ class index extends Component {
     if (!this.props.isSignedIn) {
       return (
         <Stack.Navigator
-          // initialRouteName="SignUp"
           screenOptions={{
             animationEnabled: false,
           }}>
@@ -56,6 +56,13 @@ class index extends Component {
             }}
             component={AddTodoScreen}
             name="AddTodo"
+          />
+          <Stack.Screen
+            options={{
+              headerShown: false,
+            }}
+            component={SettingsScreen}
+            name="Settings"
           />
         </Stack.Navigator>
       );

@@ -40,6 +40,12 @@ export default (state = Initial_State, action) => {
         typename: action.typename,
         todos: action.todos,
       };
+
+    case 'LOGOUT':
+      return {
+        ...Initial_State,
+      };
+
     default:
       return state;
   }
